@@ -1,0 +1,30 @@
+module.exports = {
+  black: '#000000',
+  'black-70': '#121213',
+  'black-60': '#1a1a1b',
+  'black-50': '#212121',
+  'black-40': '#272729',
+  'black-30': '#2f2f31',
+  'black-20': '#363636',
+  'black-10': '#3a3a3c',
+
+  'gray-100': '#565758',
+  'gray-90': '#59595a',
+  'gray-80': '#787c7e',
+  'gray-70': '#818384',
+  'gray-60': '#878a8c',
+  'gray-50': '#939598',
+  'gray-40': '#a6a6a6',
+  'gray-30': '#d3d6da',
+  'gray-20': '#e3e3e1',
+  'gray-10': '#edeff1',
+
+  'white-20': '#f4f4f4',
+  'white-10': '#f6f7f8',
+  white: '#ffffff',
+
+  'green-100': '#538d4e',
+  'green-50': '#6aaa64',
+  'yellow-100': '#b59f3b',
+  'yellow-50': '#c9b458',
+};

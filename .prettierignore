@@ -1,0 +1,6 @@
+#Builds
+.next/
+out/
+build/
+.vercel/
+
