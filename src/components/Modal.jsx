@@ -11,7 +11,7 @@ export function Modal({ children, onClose, title }) {
   }
 
   return (
-    <Portal className="absolute left-1/2 z-10 flex h-full w-full -translate-x-1/2 items-center justify-center bg-white-20 bg-opacity-60 dark:bg-black-70 dark:bg-opacity-80">
+    <Portal className="absolute left-1/2 z-20 flex h-full w-full -translate-x-1/2 items-center justify-center bg-white-20 bg-opacity-60 dark:bg-black-70 dark:bg-opacity-80">
       <div className="relative max-h-full w-[90%] max-w-lg">
         <div className="w-full overflow-y-auto rounded-lg  bg-gray-20 p-4 dark:bg-black-60">
           <div className="pb-3">
