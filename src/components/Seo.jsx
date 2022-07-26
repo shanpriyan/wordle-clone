@@ -4,8 +4,8 @@ const meta = {
   title: 'Wordle Clone',
   description: 'Wordle clone built with Next.js and tailwindcss',
   authorName: 'Shanmughapriyan S',
-  siteUrl: 'https://wordle-clone.shanpriyan.in/',
-  imageUrl: 'https://wordle-clone.shanpriyan.in/og.png',
+  siteUrl: 'https://wordle.shanpriyan.in/',
+  imageUrl: 'https://wordle.shanpriyan.in/og.png',
   twitterUserName: '_shanpriyan',
 };
 

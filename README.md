@@ -6,7 +6,7 @@
     Wordle Clone built with Next.js and tailwindcss.
     <br />
     <br />
-    <a href="https://wordle-clone.shanpriyan.in/" target="_blank">View Demo</a>
+    <a href="https://wordle.shanpriyan.in/" target="_blank">View Demo</a>
   </p>
 </p>
 
@@ -58,4 +58,4 @@ Steps to run Wordle Clone in your local environment.
 
 ## Demo
 
-Live Demo - https://wordle-clone.shanpriyan.in/
+Live Demo - https://wordle.shanpriyan.in/
