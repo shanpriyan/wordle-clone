@@ -2,7 +2,7 @@ import Script from 'next/script';
 import '../styles/globals.css';
 import { ToastProvider, WordleProvider, ModalProvider } from '@contexts';
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Script
@@ -29,5 +29,3 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-
-export default MyApp;

@@ -8,3 +8,4 @@ export * from './HelpModal';
 export * from './Modal';
 export * from './FinalStatsModal';
 export * from './Portal';
+export * from './Seo';

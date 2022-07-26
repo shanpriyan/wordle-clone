@@ -1,6 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import Head from 'next/head';
-import { Board, Header, Keyboard } from '@components';
+import { Seo, Board, Header, Keyboard } from '@components';
 import { useModal, useToast, useWordle } from '@hooks';
 import { BACKSPACE, COLUMN_COUNT, ENTER, MODAL_TYPE } from '@constants';
 import { getLetterStatus, isAlphabet } from '@utils';
@@ -124,9 +123,7 @@ export default function Home() {
 
   return (
     <div className="h-full w-full">
-      <Head>
-        <title>Wordle Clone</title>
-      </Head>
+      <Seo />
       <Header />
       <div className="mx-auto flex h-app-content w-full max-w-lg flex-col items-center">
         <Board />
