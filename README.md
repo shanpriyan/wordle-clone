@@ -31,13 +31,13 @@ Steps to run Wordle Clone in your local environment.
 3. Install the NPM packages
 
    ```sh
-   npm i
+   npm install
    ```
 
    or
 
    ```sh
-   yarn add
+   yarn install
    ```
 
 4. Start the development server
@@ -52,7 +52,7 @@ Steps to run Wordle Clone in your local environment.
    yarn dev
    ```
 
-5. Development server will start at http://localhost:3000
+5. Visit http://localhost:3000
 
 <br/>
 
