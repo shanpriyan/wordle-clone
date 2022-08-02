@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: 'yarn'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    commit-message:
+      prefix: '⬆️ dep:'
+      prefix-development: '⬆️🔨 dev-dep:'
+    assignees:
+      - "shanpriyan"
+    reviewers:
+      - "shanpriyan"
+    open-pull-requests-limit: 50
+    rebase-strategy: auto
