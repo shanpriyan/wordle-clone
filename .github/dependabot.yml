@@ -5,11 +5,11 @@ updates:
     schedule:
       interval: 'daily'
     commit-message:
-      prefix: '⬆️ dep:'
-      prefix-development: '⬆️🔨 dev-dep:'
+      prefix: '⬆️ deps:'
+      prefix-development: '⬆️🔨 dev-deps:'
     assignees:
       - "shanpriyan"
     reviewers:
       - "shanpriyan"
-    open-pull-requests-limit: 50
+    open-pull-requests-limit: 10
     rebase-strategy: auto
