@@ -11,5 +11,5 @@ updates:
       - "shanpriyan"
     reviewers:
       - "shanpriyan"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     rebase-strategy: auto
