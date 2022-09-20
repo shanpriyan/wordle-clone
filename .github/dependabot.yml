@@ -6,7 +6,6 @@ updates:
       interval: 'daily'
     commit-message:
       prefix: 'chore(⬆️deps):'
-      prefix-development: 'chore(⬆️🔨dev-deps):'
     assignees:
       - "shanpriyan"
     open-pull-requests-limit: 2
