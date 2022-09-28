@@ -2,7 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { Seo, Board, Header, Keyboard } from '@components';
 import { useModal, useToast, useWordle } from '@hooks';
 import { BACKSPACE, COLUMN_COUNT, ENTER, MODAL_TYPE } from '@constants';
-import { getLetterStatus, isAlphabet } from '@utils';
+import { getLetterStatus, isAlphabet, calculateFinalStats } from '@utils';
 
 export default function Home() {
   const { dispatchModal } = useModal();
@@ -17,6 +17,7 @@ export default function Home() {
       tileState,
       wordToBeGuessed,
       isRestored,
+      guessDistribution,
     },
     setCurrPos,
     setBoard,
@@ -24,6 +25,7 @@ export default function Home() {
     setGameOver,
     setKeyState,
     dictionary,
+    setFinalStats,
   } = useWordle();
 
   useEffect(() => {
@@ -61,7 +63,8 @@ export default function Home() {
     setTileState(_tileState);
     setKeyState(_keyState);
     setGameOver(isGameOver);
-    setCurrPos({ x: x + 1, y: 0 });
+    setFinalStats(calculateFinalStats(_tileState, guessDistribution));
+    if (!isGameOver) setCurrPos({ x: x + 1, y: 0 });
     if (isGameOver) {
       showSingleToast(wordToBeGuessed.toUpperCase(), 1500, () => {
         dispatchModal({ type: MODAL_TYPE.FINAL_STATS });
@@ -71,11 +74,13 @@ export default function Home() {
     board,
     dictionary,
     keyState,
+    guessDistribution,
     dispatchModal,
     setCurrPos,
     setGameOver,
     setKeyState,
     setTileState,
+    setFinalStats,
     showMultiToast,
     tileState,
     showSingleToast,

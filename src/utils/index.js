@@ -66,7 +66,12 @@ export function getKeyBgClr(keyState, letter) {
     return TILE_COLOR[MISS];
   }
 }
-
-export function calculateFinalStats(tileState) {
-  return tileState.map(row => row.every(state => state === EXACT));
+export function calculateFinalStats(tileState, guessDistribution) {
+  return tileState.map((row, index) => {
+    const isCorrectGuess = row.every(letterState => letterState === EXACT);
+    if (isCorrectGuess) {
+      return guessDistribution[index] + 1;
+    }
+    return guessDistribution[index];
+  });
 }
