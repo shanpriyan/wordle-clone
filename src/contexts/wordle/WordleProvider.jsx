@@ -37,7 +37,6 @@ export function WordleProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [dictionary, setDictionary] = useState({});
 
-  console.log(state);
 
   const setWordToBeGuessed = useCallback(() => {
     const randomWord = getRandomWord(dictionary.wordleDictionaryArray);

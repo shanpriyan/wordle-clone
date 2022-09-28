@@ -1,6 +1,5 @@
 import cx from 'clsx';
-import { Modal } from './';
-import { useModal, useWordle } from '@hooks';
+import {  useWordle } from '@hooks';
 import { IconArrowRight } from '@icons';
 
 function Button({ children, className, ...rest }) {
@@ -17,21 +16,19 @@ function Button({ children, className, ...rest }) {
   );
 }
 
-export function FinalStatsModal() {
+export function FinalStatsModal({onClose}) {
   const {
     state: { guessDistribution, currPos },
     resetGameState,
   } = useWordle();
 
-  const { dispatchModal } = useModal();
 
   function onReset() {
     resetGameState();
-    dispatchModal({ isVisible: false });
+    onClose?.()
   }
 
   return (
-    <Modal title="GUESS DISTRIBUTION">
       <div className="flex flex-col items-center justify-center">
         <ul className="mb-2 w-full">
           {guessDistribution.map((score, index) => {
@@ -64,6 +61,5 @@ export function FinalStatsModal() {
           Try a new word <IconArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </div>
-    </Modal>
   );
 }

@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react';
-import { Seo, Board, Header, Keyboard } from '@components';
+import { Seo, Board, Header, Keyboard,FinalStatsModal } from '@components';
 import { useModal, useToast, useWordle } from '@hooks';
 import { BACKSPACE, COLUMN_COUNT, ENTER, MODAL_TYPE } from '@constants';
 import { getLetterStatus, isAlphabet, calculateFinalStats } from '@utils';
 
 export default function Home() {
-  const { dispatchModal } = useModal();
+  const { setModalContent } = useModal();
   const { showMultiToast, showSingleToast } = useToast();
 
   const {
@@ -28,6 +28,15 @@ export default function Home() {
     setFinalStats,
   } = useWordle();
 
+  const showFinalStatsModal = useCallback(() => {
+    setModalContent({
+      renderContent(onClose) {
+        return <FinalStatsModal onClose={onClose} />;
+      },
+      title: 'Guess Distribution',
+    })
+  },[setModalContent])
+
   useEffect(() => {
     /**
      * Show stats modal only on mount after retrieving data
@@ -35,12 +44,12 @@ export default function Home() {
      *  */
     if (isRestored && isGameOver) {
       const timerId = setTimeout(() => {
-        dispatchModal({ type: MODAL_TYPE.FINAL_STATS });
+        showFinalStatsModal()
       }, 300);
       return () => clearTimeout(timerId);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatchModal, isRestored]);
+  }, [showFinalStatsModal, isRestored]);
 
   const onEnter = useCallback(() => {
     if (y < 5) {
@@ -67,7 +76,7 @@ export default function Home() {
     if (!isGameOver) setCurrPos({ x: x + 1, y: 0 });
     if (isGameOver) {
       showSingleToast(wordToBeGuessed.toUpperCase(), 1500, () => {
-        dispatchModal({ type: MODAL_TYPE.FINAL_STATS });
+        showFinalStatsModal()
       });
     }
   }, [
@@ -75,7 +84,7 @@ export default function Home() {
     dictionary,
     keyState,
     guessDistribution,
-    dispatchModal,
+    showFinalStatsModal,
     setCurrPos,
     setGameOver,
     setKeyState,
@@ -111,7 +120,7 @@ export default function Home() {
   const handleKeyPress = useCallback(
     key => {
       if (isGameOver) {
-        dispatchModal({ type: MODAL_TYPE.FINAL_STATS });
+        showFinalStatsModal()
         return;
       }
 
@@ -123,7 +132,7 @@ export default function Home() {
         addLetterToBoard(key);
       }
     },
-    [isGameOver, onEnter, onBackspace, addLetterToBoard, dispatchModal],
+    [isGameOver, onEnter, onBackspace, addLetterToBoard, showFinalStatsModal],
   );
 
   return (
