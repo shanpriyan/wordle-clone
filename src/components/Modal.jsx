@@ -1,13 +1,9 @@
 import { Portal } from '.';
 import { IconClose } from '@icons';
-import { useModal } from '@hooks';
 
 export function Modal({ children, onClose, title }) {
-  const { dispatchModal } = useModal();
-
   function handleClose() {
     onClose?.();
-    dispatchModal({ isVisible: false });
   }
 
   return (

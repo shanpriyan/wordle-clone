@@ -46,7 +46,7 @@ const description = [
 
 export function HelpModal() {
   return (
-    <Modal title="HOW TO PLAY">
+    <>
       <p className="my-3">
         Guess the <strong>WORDLE</strong> in six tries.
       </p>
@@ -73,6 +73,6 @@ export function HelpModal() {
           </div>
         ))}
       </div>
-    </Modal>
+    </>
   );
 }
