@@ -37,6 +37,11 @@ function wordleReducer(state, action) {
         ...state,
         keyState: action.payload,
       };
+    case SET.GUESS_DISTRIBUTION:
+      return {
+        ...state,
+        guessDistribution: action.payload,
+      };
 
     case SET.INIT_LOCAL_STORAGE:
       return { ...action.payload, isRestored: true };

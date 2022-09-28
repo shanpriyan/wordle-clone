@@ -1,7 +1,6 @@
 import cx from 'clsx';
 import { Modal } from './';
 import { useModal, useWordle } from '@hooks';
-import { calculateFinalStats } from '@utils';
 import { IconArrowRight } from '@icons';
 
 function Button({ children, className, ...rest }) {
@@ -20,41 +19,48 @@ function Button({ children, className, ...rest }) {
 
 export function FinalStatsModal() {
   const {
-    state: { tileState },
+    state: { guessDistribution, currPos },
     resetGameState,
   } = useWordle();
 
   const { dispatchModal } = useModal();
 
-  function handleGameOver() {
+  function onReset() {
     resetGameState();
     dispatchModal({ isVisible: false });
   }
 
   return (
-    <Modal title="LAST WORD GUESS">
+    <Modal title="GUESS DISTRIBUTION">
       <div className="flex flex-col items-center justify-center">
         <ul className="mb-2 w-full">
-          {calculateFinalStats(tileState).map((isCorrect, i) => (
-            <li
-              key={`stats-${i}`}
-              className="mx-10 mb-1 flex text-sm font-semibold"
-            >
-              <div className="mr-2 font-mono">{i + 1}</div>
-              <div
-                className={cx(
-                  'flex items-center text-white',
-                  isCorrect
-                    ? 'w-full justify-end bg-green-50 pr-3 dark:bg-green-100'
-                    : 'w-[7%] justify-center bg-gray-80',
-                )}
+          {guessDistribution.map((score, index) => {
+            return (
+              <li
+                key={`stats-${index}`}
+                className="mx-10 mb-1 flex text-sm font-semibold"
               >
-                {isCorrect ? '1' : '0'}
-              </div>
-            </li>
-          ))}
+                <div className="mr-2 font-mono">{index + 1}</div>
+                <div
+                  className={cx(
+                    'flex items-center text-white',
+                    score > 0
+                      ? [
+                          `w-full justify-end pr-3`,
+                          currPos.x === index
+                            ? 'bg-green-50 dark:bg-green-100'
+                            : 'bg-gray-60 dark:bg-gray-80',
+                        ]
+                      : 'w-[7%] justify-center bg-gray-80',
+                  )}
+                >
+                  {score}
+                </div>
+              </li>
+            );
+          })}
         </ul>
-        <Button onClick={handleGameOver}>
+        <Button onClick={onReset}>
           Try a new word <IconArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </div>

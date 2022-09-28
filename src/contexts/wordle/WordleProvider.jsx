@@ -7,7 +7,12 @@ import {
 } from 'react';
 import { SET, LS_WORDLE_STATE_KEY } from './actions';
 import { reducer } from './reducer';
-import { initialBoard, initialTileState, TILE_STATUS } from '@constants';
+import {
+  initialBoard,
+  initialTileState,
+  TILE_STATUS,
+  ROW_COUNT,
+} from '@constants';
 import { getWordleDictionary, getRandomWord } from '@utils';
 
 export const WordleContext = createContext();
@@ -25,11 +30,14 @@ const initialState = {
   },
   isGameOver: false,
   wordToBeGuessed: '',
+  guessDistribution: Array(ROW_COUNT).fill(0),
 };
 
 export function WordleProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [dictionary, setDictionary] = useState({});
+
+  console.log(state);
 
   const setWordToBeGuessed = useCallback(() => {
     const randomWord = getRandomWord(dictionary.wordleDictionaryArray);
@@ -74,11 +82,11 @@ export function WordleProvider({ children }) {
     setGameOver(false);
     dispatch({
       type: SET.RESET,
-      payload: initialState,
+      payload: { ...initialState, guessDistribution: state.guessDistribution },
     });
     setWordToBeGuessed();
     localStorage.removeItem(LS_WORDLE_STATE_KEY);
-  }, [setWordToBeGuessed, setGameOver]);
+  }, [setWordToBeGuessed, setGameOver, state]);
 
   const setCurrPos = useCallback(coords => {
     dispatch({
@@ -108,6 +116,13 @@ export function WordleProvider({ children }) {
     });
   }, []);
 
+  const setFinalStats = useCallback(guessDistribution => {
+    dispatch({
+      type: SET.GUESS_DISTRIBUTION,
+      payload: guessDistribution,
+    });
+  }, []);
+
   return (
     <WordleContext.Provider
       value={{
@@ -119,6 +134,7 @@ export function WordleProvider({ children }) {
         setGameOver,
         dictionary,
         resetGameState,
+        setFinalStats,
       }}
     >
       {children}
