@@ -37,7 +37,7 @@ function wordleReducer(state, action) {
         ...state,
         keyState: action.payload,
       };
-    case SET.FINAL_STATS:
+    case SET.GUESS_DISTRIBUTION:
       return {
         ...state,
         guessDistribution: action.payload,

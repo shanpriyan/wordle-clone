@@ -118,7 +118,7 @@ export function WordleProvider({ children }) {
 
   const setFinalStats = useCallback(guessDistribution => {
     dispatch({
-      type: SET.FINAL_STATS,
+      type: SET.GUESS_DISTRIBUTION,
       payload: guessDistribution,
     });
   }, []);

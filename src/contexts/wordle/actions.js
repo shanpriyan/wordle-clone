@@ -7,7 +7,7 @@ export const SET = Object.freeze({
   GAME_OVER: 5,
   INIT_LOCAL_STORAGE: 6,
   RESET: 7,
-  FINAL_STATS: 8
+  GUESS_DISTRIBUTION: 8,
 });
 
 export const LS_WORDLE_STATE_KEY = 'wordle-state';
