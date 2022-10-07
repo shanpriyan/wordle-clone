@@ -1,7 +1,7 @@
-import { createPortal } from 'react-dom';
-import { useRef, useLayoutEffect } from 'react';
+import {createPortal} from 'react-dom';
+import {useRef, useLayoutEffect} from 'react';
 
-export function Portal({ children, className }) {
+export function Portal({children, className}) {
   const portalChild = useRef(document.createElement('div'));
 
   useLayoutEffect(() => {

@@ -1,7 +1,7 @@
 import cx from 'clsx';
-import { IconLight, IconDark } from '@icons';
+import {IconLight, IconDark} from '@icons';
 
-export function ThemeButton({ className }) {
+export function ThemeButton({className}) {
   const buttonStyle =
     'w-8 h-8 rounded-lg items-center justify-center hover:ring-2 hover:ring-[#666666] transition-all';
   const iconClass = 'h-5 w-5';

@@ -1,13 +1,13 @@
 const aliases = require('./jsconfig.json').compilerOptions;
 
 function getImportAliases() {
-  const { baseUrl, paths } = aliases;
+  const {baseUrl, paths} = aliases;
   return Object.keys(paths).reduce(
     (acc, aliasPath) => ({
       ...acc,
       [aliasPath]: `${baseUrl}/${paths[aliasPath]}`,
     }),
-    {},
+    {}
   );
 }
 

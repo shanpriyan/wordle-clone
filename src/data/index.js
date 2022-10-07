@@ -1,1 +1,1 @@
-export { default as dictionary } from './dictionary.json';
+export {default as dictionary} from './dictionary.json';

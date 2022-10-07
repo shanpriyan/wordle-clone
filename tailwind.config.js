@@ -1,5 +1,5 @@
 const colors = require('./src/styles/colors.js');
-const { keyframes, animation } = require('./src/styles/animations');
+const {keyframes, animation} = require('./src/styles/animations');
 
 module.exports = {
   mode: 'jit',

@@ -1,8 +1,8 @@
 import Script from 'next/script';
 import '../styles/globals.css';
-import { ToastProvider, WordleProvider, ModalProvider } from '@contexts';
+import {ToastProvider, WordleProvider, ModalProvider} from '@contexts';
 
-export default function App({ Component, pageProps }) {
+export default function App({Component, pageProps}) {
   return (
     <>
       <Script

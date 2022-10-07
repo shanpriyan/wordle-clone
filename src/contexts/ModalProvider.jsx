@@ -1,4 +1,4 @@
-import { createContext, useState, useCallback, useMemo } from 'react';
+import {createContext, useState, useCallback, useMemo} from 'react';
 import dynamic from 'next/dynamic';
 
 const Modal = dynamic(() => import('@components').then(comp => comp.Modal), {
@@ -7,7 +7,7 @@ const Modal = dynamic(() => import('@components').then(comp => comp.Modal), {
 
 export const ModalContext = createContext();
 
-export function ModalProvider({ children }) {
+export function ModalProvider({children}) {
   const [modalData, setModalData] = useState(null);
 
   const onClose = useCallback(() => {
@@ -17,24 +17,24 @@ export function ModalProvider({ children }) {
   const renderModal = useMemo(() => {
     if (!modalData) return null;
 
-    const { title, renderContent } = modalData;
+    const {title, renderContent} = modalData;
 
     return (
       <Modal title={title} onClose={onClose}>
         {renderContent}
       </Modal>
     );
-  }, [modalData,onClose]);
+  }, [modalData, onClose]);
 
   const setModalContent = useCallback(
-    ({ renderContent, title }) => {
-      setModalData({ title, renderContent: renderContent(onClose) });
+    ({renderContent, title}) => {
+      setModalData({title, renderContent: renderContent(onClose)});
     },
-    [onClose],
+    [onClose]
   );
 
   return (
-    <ModalContext.Provider value={{ setModalContent }}>
+    <ModalContext.Provider value={{setModalContent}}>
       {renderModal}
       {children}
     </ModalContext.Provider>

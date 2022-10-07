@@ -1,9 +1,9 @@
-import { IconGithub, IconHelp } from '@icons';
-import { ExternalLink, ThemeButton, HelpModal } from '@components';
-import { useModal } from '@hooks';
+import {IconGithub, IconHelp} from '@icons';
+import {ExternalLink, ThemeButton, HelpModal} from '@components';
+import {useModal} from '@hooks';
 
 export function Header() {
-  const { setModalContent } = useModal();
+  const {setModalContent} = useModal();
   return (
     <header className="flex h-header w-full items-center justify-center border-b border-gray-30 px-3 text-4xl dark:border-black-10">
       <ExternalLink href="https://github.com/shanpriyan/wordle-clone">

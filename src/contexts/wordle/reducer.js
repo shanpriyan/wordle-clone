@@ -1,11 +1,11 @@
-import { SET, LS_WORDLE_STATE_KEY } from './actions';
+import {SET, LS_WORDLE_STATE_KEY} from './actions';
 
 function wordleReducer(state, action) {
   switch (action.type) {
     case SET.CURR_POS:
       return {
         ...state,
-        currPos: { ...state.currPos, ...action.payload },
+        currPos: {...state.currPos, ...action.payload},
       };
 
     case SET.BOARD:
@@ -44,10 +44,10 @@ function wordleReducer(state, action) {
       };
 
     case SET.INIT_LOCAL_STORAGE:
-      return { ...action.payload, isRestored: true };
+      return {...action.payload, isRestored: true};
 
     case SET.RESET:
-      return { ...action.payload };
+      return {...action.payload};
 
     default:
       return state;

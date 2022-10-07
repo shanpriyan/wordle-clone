@@ -1,28 +1,27 @@
-import { createElement } from 'react';
-import { Tile } from './Board';
-import { Modal } from '.';
+import {createElement} from 'react';
+import {Tile} from './Board';
 
 const exampleWords = [
   [
-    { letter: 'h', status: 'exact' },
-    { letter: 'e' },
-    { letter: 'l' },
-    { letter: 'l' },
-    { letter: 'o' },
+    {letter: 'h', status: 'exact'},
+    {letter: 'e'},
+    {letter: 'l'},
+    {letter: 'l'},
+    {letter: 'o'},
   ],
   [
-    { letter: 'w' },
-    { letter: 'o' },
-    { letter: 'r', status: 'almost' },
-    { letter: 'l' },
-    { letter: 'd' },
+    {letter: 'w'},
+    {letter: 'o'},
+    {letter: 'r', status: 'almost'},
+    {letter: 'l'},
+    {letter: 'd'},
   ],
   [
-    { letter: 's' },
-    { letter: 'p' },
-    { letter: 'a' },
-    { letter: 'c', status: 'miss' },
-    { letter: 'e' },
+    {letter: 's'},
+    {letter: 'p'},
+    {letter: 'a'},
+    {letter: 'c', status: 'miss'},
+    {letter: 'e'},
   ],
 ];
 
@@ -63,7 +62,7 @@ export function HelpModal() {
         {exampleWords.map((row, index) => (
           <div key={index}>
             <div className="mb-2 flex gap-1">
-              {row.map(({ letter, status }, i) => (
+              {row.map(({letter, status}, i) => (
                 <Tile key={i} state={status} className="h-10 w-10">
                   {letter}
                 </Tile>
