@@ -5,22 +5,22 @@ import {
   useState,
   useCallback,
 } from 'react';
-import { SET, LS_WORDLE_STATE_KEY } from './actions';
-import { reducer } from './reducer';
+import {SET, LS_WORDLE_STATE_KEY} from './actions';
+import {reducer} from './reducer';
 import {
   initialBoard,
   initialTileState,
   TILE_STATUS,
   ROW_COUNT,
 } from '@constants';
-import { getWordleDictionary, getRandomWord } from '@utils';
+import {getWordleDictionary, getRandomWord} from '@utils';
 
 export const WordleContext = createContext();
 
-const { MISS, EXACT, ALMOST } = TILE_STATUS;
+const {MISS, EXACT, ALMOST} = TILE_STATUS;
 
 const initialState = {
-  currPos: { x: 0, y: 0 },
+  currPos: {x: 0, y: 0},
   board: initialBoard,
   tileState: initialTileState,
   keyState: {
@@ -33,10 +33,9 @@ const initialState = {
   guessDistribution: Array(ROW_COUNT).fill(0),
 };
 
-export function WordleProvider({ children }) {
+export function WordleProvider({children}) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [dictionary, setDictionary] = useState({});
-
 
   const setWordToBeGuessed = useCallback(() => {
     const randomWord = getRandomWord(dictionary.wordleDictionaryArray);
@@ -47,8 +46,7 @@ export function WordleProvider({ children }) {
   }, [dictionary]);
 
   useEffect(() => {
-    const { wordleDictionarySet, wordleDictionaryArray } =
-      getWordleDictionary();
+    const {wordleDictionarySet, wordleDictionaryArray} = getWordleDictionary();
 
     setDictionary({
       wordleDictionarySet,
@@ -81,7 +79,7 @@ export function WordleProvider({ children }) {
     setGameOver(false);
     dispatch({
       type: SET.RESET,
-      payload: { ...initialState, guessDistribution: state.guessDistribution },
+      payload: {...initialState, guessDistribution: state.guessDistribution},
     });
     setWordToBeGuessed();
     localStorage.removeItem(LS_WORDLE_STATE_KEY);

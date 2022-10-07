@@ -1,16 +1,16 @@
-import { useCallback, useEffect } from 'react';
-import { Seo, Board, Header, Keyboard,FinalStatsModal } from '@components';
-import { useModal, useToast, useWordle } from '@hooks';
-import { BACKSPACE, COLUMN_COUNT, ENTER, MODAL_TYPE } from '@constants';
-import { getLetterStatus, isAlphabet, calculateFinalStats } from '@utils';
+import {useCallback, useEffect} from 'react';
+import {Seo, Board, Header, Keyboard, FinalStatsModal} from '@components';
+import {useModal, useToast, useWordle} from '@hooks';
+import {BACKSPACE, COLUMN_COUNT, ENTER} from '@constants';
+import {getLetterStatus, isAlphabet, calculateFinalStats} from '@utils';
 
 export default function Home() {
-  const { setModalContent } = useModal();
-  const { showMultiToast, showSingleToast } = useToast();
+  const {setModalContent} = useModal();
+  const {showMultiToast, showSingleToast} = useToast();
 
   const {
     state: {
-      currPos: { x, y },
+      currPos: {x, y},
       board,
       isGameOver,
       keyState,
@@ -34,8 +34,8 @@ export default function Home() {
         return <FinalStatsModal onClose={onClose} />;
       },
       title: 'Guess Distribution',
-    })
-  },[setModalContent])
+    });
+  }, [setModalContent]);
 
   useEffect(() => {
     /**
@@ -44,7 +44,7 @@ export default function Home() {
      *  */
     if (isRestored && isGameOver) {
       const timerId = setTimeout(() => {
-        showFinalStatsModal()
+        showFinalStatsModal();
       }, 300);
       return () => clearTimeout(timerId);
     }
@@ -73,10 +73,10 @@ export default function Home() {
     setKeyState(_keyState);
     setGameOver(isGameOver);
     setFinalStats(calculateFinalStats(_tileState, guessDistribution));
-    if (!isGameOver) setCurrPos({ x: x + 1, y: 0 });
+    if (!isGameOver) setCurrPos({x: x + 1, y: 0});
     if (isGameOver) {
       showSingleToast(wordToBeGuessed.toUpperCase(), 1500, () => {
-        showFinalStatsModal()
+        showFinalStatsModal();
       });
     }
   }, [
@@ -103,7 +103,7 @@ export default function Home() {
     const tempBoard = board.map(arr => [...arr]);
     tempBoard[x][y - 1] = '';
     setBoard(tempBoard);
-    setCurrPos({ y: y - 1 });
+    setCurrPos({y: y - 1});
   }, [setBoard, setCurrPos, x, y, board]);
 
   const addLetterToBoard = useCallback(
@@ -112,15 +112,15 @@ export default function Home() {
       const tempBoard = board.map(arr => [...arr]);
       tempBoard[x][y] = letter.toLowerCase();
       setBoard(tempBoard);
-      setCurrPos({ y: y + 1 });
+      setCurrPos({y: y + 1});
     },
-    [setBoard, setCurrPos, x, y, board],
+    [setBoard, setCurrPos, x, y, board]
   );
 
   const handleKeyPress = useCallback(
     key => {
       if (isGameOver) {
-        showFinalStatsModal()
+        showFinalStatsModal();
         return;
       }
 
@@ -132,7 +132,7 @@ export default function Home() {
         addLetterToBoard(key);
       }
     },
-    [isGameOver, onEnter, onBackspace, addLetterToBoard, showFinalStatsModal],
+    [isGameOver, onEnter, onBackspace, addLetterToBoard, showFinalStatsModal]
   );
 
   return (

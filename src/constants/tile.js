@@ -4,7 +4,7 @@ const TILE_STATUS = {
   EXACT: 'exact',
 };
 
-const { MISS, ALMOST, EXACT } = TILE_STATUS;
+const {MISS, ALMOST, EXACT} = TILE_STATUS;
 
 const TILE_COLOR = {
   [EXACT]: 'bg-green-50 dark:bg-green-100',
@@ -18,4 +18,4 @@ const TILE_BORDER_COLOR = {
   [MISS]: 'border-gray-50 dark:border-black-10',
 };
 
-export { TILE_STATUS, TILE_COLOR, TILE_BORDER_COLOR };
+export {TILE_STATUS, TILE_COLOR, TILE_BORDER_COLOR};

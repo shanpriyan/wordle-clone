@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
-import { createContext, useRef, useState, useCallback } from 'react';
+import {createContext, useRef, useState, useCallback} from 'react';
 
 const ToastContainer = dynamic(
   () => import('@components').then(comp => comp.ToastContainer),
   {
     ssr: false,
-  },
+  }
 );
 
 export const ToastContext = createContext();
@@ -13,7 +13,7 @@ export const ToastContext = createContext();
 const TOAST_DURATION = 300;
 const MAX_TOAST = 6;
 
-export function ToastProvider({ children }) {
+export function ToastProvider({children}) {
   const [queue, setQueue] = useState([]);
   const intervalId = useRef();
   const timerId = useRef();
@@ -38,27 +38,27 @@ export function ToastProvider({ children }) {
   const showMultiToast = useCallback(
     (text, duration = TOAST_DURATION, onComplete) => {
       if (queue.length === MAX_TOAST) return;
-      setQueue(currQueue => [{ text, id: Date.now() }, ...currQueue]);
+      setQueue(currQueue => [{text, id: Date.now()}, ...currQueue]);
       processQueue(duration, onComplete);
     },
-    [queue, processQueue],
+    [queue, processQueue]
   );
 
   const showSingleToast = useCallback(
     (text, duration = TOAST_DURATION, onComplete) => {
       clearTimeout(timerId.current);
 
-      setQueue([{ text, id: Date.now() }]);
+      setQueue([{text, id: Date.now()}]);
       timerId.current = setTimeout(() => {
         onComplete?.();
         setQueue([]);
       }, duration);
     },
-    [],
+    []
   );
 
   return (
-    <ToastContext.Provider value={{ showMultiToast, showSingleToast }}>
+    <ToastContext.Provider value={{showMultiToast, showSingleToast}}>
       <ToastContainer queue={queue} />
       {children}
     </ToastContext.Provider>

@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 import cx from 'clsx';
-import { useWordle } from '@hooks';
-import { TILE_COLOR, TILE_BORDER_COLOR } from '@constants';
+import {useWordle} from '@hooks';
+import {TILE_COLOR, TILE_BORDER_COLOR} from '@constants';
 
-export function Tile({ children, willAnimate, className, state }) {
+export function Tile({children, willAnimate, className, state}) {
   return (
     <div
       className={cx(
@@ -17,7 +17,7 @@ export function Tile({ children, willAnimate, className, state }) {
           (children
             ? 'border-gray-50 dark:border-gray-100'
             : 'border-gray-30 dark:border-black-10'),
-        state ? 'text-white' : 'text-black dark:text-white',
+        state ? 'text-white' : 'text-black dark:text-white'
       )}
     >
       {children}
@@ -30,14 +30,14 @@ export function Board() {
     state: {
       board,
       tileState,
-      currPos: { x, y },
+      currPos: {x, y},
     },
   } = useWordle();
 
-  const prevPos = useRef({ x, y });
+  const prevPos = useRef({x, y});
 
   useEffect(() => {
-    prevPos.current = { x, y };
+    prevPos.current = {x, y};
   }, [x, y]);
 
   function renderBoard() {
@@ -54,7 +54,7 @@ export function Board() {
             {letter}
           </Tile>
         );
-      }),
+      })
     );
   }
 

@@ -1,8 +1,8 @@
 /* globals Set */
-import { dictionary } from '@data';
-import { TILE_STATUS, TILE_COLOR } from '@constants';
+import {dictionary} from '@data';
+import {TILE_STATUS, TILE_COLOR} from '@constants';
 
-const { MISS, EXACT, ALMOST } = TILE_STATUS;
+const {MISS, EXACT, ALMOST} = TILE_STATUS;
 
 export const isAlphabet = letter => /^[a-z]$/.test(letter.toLowerCase());
 
@@ -21,7 +21,7 @@ export function getLetterStatus(
   currRowIndex,
   keyState,
   tileState,
-  wordToBeGuessed,
+  wordToBeGuessed
 ) {
   const tempKeyState = JSON.parse(JSON.stringify(keyState));
   const tempTileState = tileState.map(row => [...row]);
@@ -44,7 +44,7 @@ export function getLetterStatus(
   });
 
   const isGameOver = tempTileState[currRowIndex].every(
-    _state => _state === EXACT,
+    _state => _state === EXACT
   );
   return {
     tileState: tempTileState,

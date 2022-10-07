@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { WordleContext } from '@contexts';
+import {useContext} from 'react';
+import {WordleContext} from '@contexts';
 
 export function useWordle() {
   const ctx = useContext(WordleContext);

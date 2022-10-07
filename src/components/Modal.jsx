@@ -1,7 +1,7 @@
-import { Portal } from '.';
-import { IconClose } from '@icons';
+import {Portal} from '.';
+import {IconClose} from '@icons';
 
-export function Modal({ children, onClose, title }) {
+export function Modal({children, onClose, title}) {
   function handleClose() {
     onClose?.();
   }
